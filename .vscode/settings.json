@@ -2,8 +2,8 @@
     "editor.minimap.enabled": false,
     "editor.inlayHints.enabled": "off",
     "files.exclude": {
-        "**/.devcontainer": false,
-        "**/.vscode": false,
+        "**/.devcontainer": true,
+        "**/.vscode": true,
         "**/.gitignore": true,
         "**/.github": true,
     },
