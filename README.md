@@ -540,68 +540,61 @@ classDiagram
 
 ### Explanation
 
-The `toString()` method is inherited from the `Object` class (the root of all classes in Java).  It's designed to return a string representation of an object. The default implementation is not very useful; it just returns something like `ClassName@hashcode`.  Overriding `toString()` allows you to create a more informative and human-readable string representation of your objects.
+The `toString()` method in Java is used to provide a string representation of an object. When you print an object, Java internally calls the `toString()` method to get its string form. By default, the `toString()` method in the `Object` class returns the class name followed by the object's hashcode, but you can override this method to provide a more meaningful representation of your object.
 
-**Default `toString()` Output:**
+### Demo: Overriding `toString()` in the `Book` Class
+
+Let’s implement the `Book` class and override the `toString()` method to display its details neatly.
+
+```java
+public class Book {
+    private String title;
+    private String author;
+    private int pages;
+
+    // Constructor
+    public Book(String title, String author, int pages) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+    }
+
+    // Overriding toString()
+    @Override
+    public String toString() {
+        return "Book: " + title + " by " + author + " (" + pages + " pages)";
+    }
+}
+```
+
+Now, let’s test this in the `Main` class.
 
 ```java
 public class Main {
-  public static void main(String[] args) {
-    Student student = new Student();
-    System.out.println(student); //Calls the toString method implicitly
-    // Output: Student@15db9742 (or similar)
-  }
+    public static void main(String[] args) {
+        // Create a Book object
+        Book book1 = new Book("The Hobbit", "J.R.R. Tolkien", 310);
+
+        // Print the book object
+        System.out.println(book1);  // Output: Book: The Hobbit by J.R.R. Tolkien (310 pages)
+    }
 }
 ```
 
-### Example
+### DIY Coding Task: Overriding `toString()` in the `Student` Class
 
-Overriding `toString()` in the `Student` class.
-
-```java
-public class Student {
-  // Fields and constructors as before
-
-  @Override //This annotation indicates that you're intentionally overriding the inherited toString method
-  public String toString() {
-    return "Student{studentID='" + studentID + "', age=" + age + ", isRegistered=" + isRegistered + "}";
-  }
-}
-
-// In Main.java
-public class Main {
-  public static void main(String[] args) {
-    Student student = new Student("S00345", 21, true);
-    System.out.println(student); //Calls your overridden toString() method
-    // Output: Student{studentID='S00345', age=21, isRegistered=true}
-  }
-}
-```
-
-### Mermaid Diagram
-
-```mermaid
-sequenceDiagram
-  participant Main
-  participant Student
-  Main->>Student: new Student("S00345", 21, true)
-  Student-->>Main: student
-  Main->>student: System.out.println(student)
-  student->>Student: toString()
-  Student-->>Main: "Student{studentID='S00345', age=21, isRegistered=true}"
-  Main-->>Console: Output
-```
-
-### DIY Coding Task
-
-**Objective**: Override the `toString()` method in a new class.
+**Objective**: Build upon the `Student` class from previous sections. Override the `toString()` method to provide a meaningful string representation of the student's details.
 
 **Task**:
 
-1. Create a new class called `Book` with fields `title`, `author`, and `price`.
-2. Add a parameterized constructor that initializes these fields.
-3. Override the `toString()` method to return a user-friendly string representation of the `Book` object (e.g.,  "Book{title='Effective Java', author='Joshua Bloch', price=45.99}").
-4. In your `Main` class, create a `Book` object and print it using `System.out.println(book);`.  Observe the output.
+1. In the `Student` class, override the `toString()` method.
+2. The output should display the `studentID`, `age`, and `isRegistered` fields in a neat format.
+
+**Sample Output when printing a `Student` object**:
+
+```
+Student: ID = S00234, Age = 22, Registered = true
+```
 
 ---
 
